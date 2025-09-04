@@ -1,0 +1,99 @@
+MERN Stack Todo Application
+This project is a simple Todo application built with the MERN stack:
+
+MongoDB: A NoSQL database for storing todo items.
+
+Express.js: A backend web application framework for Node.js.
+
+React.js: A frontend JavaScript library for building the user interface.
+
+Node.js: A JavaScript runtime for the server.
+
+Project Structure
+You'll need to create a project structure like this:
+
+/mern-todo-app
+├── client/
+│   ├── public/
+│   ├── src/
+│   │   └── App.jsx       <-- You'll replace the default with this file
+│   └── package.json    <-- You'll replace the default with this file
+├── models/
+│   └── Todo.js         <-- Place this file inside
+├── .env                <-- You'll create this file
+├── package.json        <-- Place this file in the root
+└── server.js           <-- Place this file in the root
+
+Prerequisites
+Node.js and npm: Download & Install Node.js
+
+MongoDB: You need a MongoDB database. You can use a local installation or a cloud service like MongoDB Atlas to get a free connection URI.
+
+Backend Setup (Server)
+Navigate to the root directory of your project (/mern-todo-app).
+
+Place the generated files: Put package.json, server.js, and the models folder (containing Todo.js) in this directory.
+
+Create an environment file: Create a new file named .env in the root directory and add your MongoDB connection string to it:
+
+MONGO_URI=mongodb+srv://<user>:<password>@cluster.mongodb.net/<dbname>?retryWrites=true&w=majority
+
+Replace the placeholder with your actual connection string.
+
+Install dependencies: Open your terminal in the root directory and run:
+
+npm install
+
+Start the server:
+
+npm run dev
+
+The backend server will start on http://localhost:5000.
+
+🚀 Frontend Setup (Client)
+Create the React App: In your terminal, from the root directory (/mern-todo-app), run the following command to create the React client folder.
+
+npx create-react-app client
+
+Replace files:
+
+Replace the contents of client/package.json with the package.json file provided for the client.
+
+Replace the contents of client/src/App.js with the App.jsx file provided. You may need to rename the file from .js to .jsx.
+
+Install client dependencies: Navigate into the new client directory and install the necessary packages.
+
+cd client
+npm install axios
+
+Set up Tailwind CSS (for styling):
+
+Install Tailwind CSS by running these commands inside the client directory:
+
+npm install -D tailwindcss
+npx tailwindcss init
+
+Configure your tailwind.config.js file:
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+Add the Tailwind directives to your src/index.css file:
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+Start the client: From the client directory, run:
+
+npm start
+
+The React application will open in your browser at http://localhost:3000. You can now add, view, complete, and delete your todos!
