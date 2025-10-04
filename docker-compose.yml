@@ -11,13 +11,6 @@ services:
       - mongo-data:/data/db
     networks:
       - mern-net
-    # --- Add this healthcheck block ---
-    healthcheck:
-      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 30s
 
   backend:
     build: ./backend
@@ -32,13 +25,31 @@ services:
     volumes:
       - ./backend:/app
       - /app/node_modules
-    # --- Modify the depends_on block like this ---
     depends_on:
-      mongo:
-        condition: service_healthy
+      - mongo
     networks:
       - mern-net
-      
+
+  frontend:
+    build: ./frontend
+    container_name: mern-frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - REACT_APP_API_URL=http://localhost:5001
+      - HTTP_REQUEST_MAX_CONNECT_TIMEOUT=30
+      - HTTP_REQUEST_MAX_READ_TIMEOUT=120
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - mern-net
+
 volumes:
   mongo-data:
 
