@@ -14,7 +14,7 @@ services:
 
   backend:
     build: ./backend
-    container_name: mern-backend
+    container_name: mern-backend-localtest
     restart: always
     ports:
       - "5001:5000"
@@ -32,7 +32,7 @@ services:
 
   frontend:
     build: ./frontend
-    container_name: mern-frontend
+    container_name: mern-frontend-localtest
     restart: always
     ports:
       - "3000:3000"
