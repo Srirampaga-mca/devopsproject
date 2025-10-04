@@ -13,6 +13,15 @@ pipeline {
         stage('Build & Run Containers') {
             steps {
                 sh '''
+                    # --- Start Debugging ---
+                    echo "Jenkins is running in this directory:"
+                    pwd
+                    echo "---"
+                    echo "Listing all files in the workspace:"
+                    ls -lR
+                    echo "--- End Debugging ---"
+
+                    # Original commands
                     docker-compose down || true
                     docker-compose up -d --build
                 '''
