@@ -30,7 +30,7 @@ pipeline {
 
         stage('Test Backend') {
             steps {
-                sh 'docker exec mern-backend npm test || true'
+                sh 'docker exec mern-backend-localtest npm test || true'
             }
         }
     }
