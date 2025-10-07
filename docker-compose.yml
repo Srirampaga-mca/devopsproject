@@ -24,7 +24,7 @@ services:
       - MONGO_URI=mongodb://mongo:27017/todos
     volumes:
       - ./backend:/app
-      - /app/node_modules
+      # - /app/node_modules
     depends_on:
       - mongo
     networks:
@@ -44,7 +44,7 @@ services:
       - HTTP_REQUEST_MAX_READ_TIMEOUT=120
     volumes:
       - ./frontend:/app
-      - /app/node_modules
+      # - /app/node_modules
     depends_on:
       - backend
     networks:

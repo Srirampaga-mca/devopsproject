@@ -22,6 +22,7 @@ pipeline {
                     echo "--- End Debugging ---"
 
                     # Original commands
+                    export COMPOSE_HTTP_TIMEOUT=300
                     docker-compose down || true
                     docker-compose up -d --build
                 '''
