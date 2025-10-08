@@ -10,7 +10,7 @@ pipeline {
             }
         }
     
-        stage('Build & Run Containers') {
+     stage('Build & Run Containers') {
             steps {
                 sh '''
                     # --- Start Debugging ---
@@ -22,9 +22,10 @@ pipeline {
                     echo "--- End Debugging ---"
 
                     # Original commands
-                    export COMPOSE_HTTP_TIMEOUT=300
-                    docker-compose down || true
-                    docker-compose up -d --build
+                    # This command now also removes old images (--rmi all) and volumes (-v)
+                    docker-compose down --rmi all -v || true
+                    # This command now forces containers to be recreated
+                    docker-compose up -d --build --force-recreate
                 '''
             }
         }
