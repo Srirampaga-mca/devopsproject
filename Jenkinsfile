@@ -32,8 +32,9 @@ pipeline {
       stage('Test Backend') {
             steps {
                 sh '''
-                    echo "Waiting for services to stabilize..."
-                    sleep 10 // Wait 10 seconds for the database to be ready
+                 echo "Waiting for services to stabilize..."
+                    # Wait 10 seconds for the database to be ready
+                    sleep 10
 
                     echo "--- Displaying Backend Logs ---"
                     docker logs mern-backend-localtest || echo "Could not get logs, container may have failed to start."
