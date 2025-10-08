@@ -21,7 +21,7 @@ pipeline {
                     ls -lR
                     echo "---"
                     echo "--- Content of backend/package.json ---"
-                    cat backend/package.json
+                    # cat backend/package.json
                     echo "--- End Debugging ---"
 
                     # ... (rest of the commands are the same)
