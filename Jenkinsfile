@@ -19,9 +19,12 @@ pipeline {
                     echo "---"
                     echo "Listing all files in the workspace:"
                     ls -lR
+                    echo "---"
+                    echo "--- Content of backend/package.json ---"
+                    cat backend/package.json
                     echo "--- End Debugging ---"
 
-                    # New commands to ensure a clean build
+                    # ... (rest of the commands are the same)
                     export COMPOSE_HTTP_TIMEOUT=300
                     docker-compose down --rmi all -v || true
                     docker-compose up -d --build --force-recreate

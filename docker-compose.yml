@@ -16,6 +16,7 @@ services:
     build: ./backend
     container_name: mern-backend-localtest
     restart: always
+    command: sleep infinity
     ports:
       - "5001:5000"
     environment:
