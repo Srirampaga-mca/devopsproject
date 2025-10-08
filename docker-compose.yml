@@ -40,7 +40,7 @@ services:
     environment:
       - NODE_ENV=development
       - PORT=3000
-      - REACT_APP_API_URL=http://localhost:5001
+      - REACT_APP_API_URL=http://localhost:5000
       - HTTP_REQUEST_MAX_CONNECT_TIMEOUT=30
       - HTTP_REQUEST_MAX_READ_TIMEOUT=120
     # volumes:
