@@ -29,9 +29,19 @@ pipeline {
             }
         }
 
-        stage('Test Backend') {
+      stage('Test Backend') {
             steps {
-                sh 'docker exec mern-backend-localtest npm test || true'
+                sh '''
+                    echo "Waiting for services to stabilize..."
+                    sleep 10 // Wait 10 seconds for the database to be ready
+
+                    echo "--- Displaying Backend Logs ---"
+                    docker logs mern-backend-localtest || echo "Could not get logs, container may have failed to start."
+                    echo "--- End of Logs ---"
+
+                    echo "Running tests..."
+                    docker exec mern-backend-localtest npm test
+                '''
             }
         }
     }
